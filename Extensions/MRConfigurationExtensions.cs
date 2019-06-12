@@ -1,9 +1,17 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MRApiCommon.Infrastructure.Common;
+using MRApiCommon.Infrastructure.IdentityExtensions.Components;
+using MRApiCommon.Infrastructure.IdentityExtensions.Interface;
+using MRApiCommon.Infrastructure.IdentityExtensions.Store;
 using MRApiCommon.Middleware;
 using MRApiCommon.Options;
+using MRMongoTools.Extensions.Identity.Manager;
+using System;
 
 namespace MRApiCommon.Extensions
 {
@@ -25,10 +33,14 @@ namespace MRApiCommon.Extensions
         /// Config JWT Token with options and DI Options[MRTokenOptions]
         /// </summary>
         /// <param name="services"></param>
-        /// <param name="options"></param>
-        public static void ConfigureMRToken(this IServiceCollection services, MRTokenOptions options)
+        /// <param name="configuration"></param>
+        /// <param name="tokenOptionsKey"></param>
+        public static void ConfigureMRToken(this IServiceCollection services, IConfiguration configuration, string tokenOptionsKey)
         {
-            services.AddOptions<MRTokenOptions>();
+            var options = new MRTokenOptions();
+            configuration.Bind(tokenOptionsKey, options);
+            services.Configure<MRTokenOptions>(configuration.GetSection(tokenOptionsKey));
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(o =>
                 {
@@ -47,5 +59,52 @@ namespace MRApiCommon.Extensions
                     };
                 });
         }
+
+        /// <summary>
+        /// Configurate MR Identity with MongoDB in system
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <param name="dbOptionsKey"></param>
+        /// <param name="userSignupActions"></param>
+        public static void ConfigurateMRIdentity<TUser, TUserStore, TUserManager>(this IServiceCollection services, IConfiguration configuration, string dbOptionsKey, Action<IdentityOptions> userSignupActions = null)
+            where TUser : MRUser, new()
+            where TUserStore : MRUserStore<TUser>
+            where TUserManager : MRUserManager<TUser>
+        {
+            var dbOptions = new MRDbOptions();
+            configuration.Bind(dbOptionsKey, dbOptions);
+            services.Configure<MRDbOptions>(configuration.GetSection(dbOptionsKey));
+
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddTransient<IMRUserStore<TUser>, TUserStore>();
+            services.AddTransient<IMRRoleStore, MRRoleStore>();
+            services.AddTransient<IUserValidator<TUser>, MRUserValidator<TUser>>();
+
+            services.AddTransient<MRRoleManager>();
+            services.AddTransient<TUserManager>();
+            services.AddTransient<MRSignInManager<TUser>>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            userSignupActions = userSignupActions ?? new Action<IdentityOptions>((a) => {
+                a.User.RequireUniqueEmail = true;
+            });
+
+            services.AddIdentityCore<TUser>(userSignupActions)
+                .AddDefaultTokenProviders();
+        }
+
+        /// <summary>
+        /// Default interpretation
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <param name="dbOptionsKey"></param>
+        /// <param name="userSignupActions"></param>
+        public static void ConfigurateMRIdentity(this IServiceCollection services, IConfiguration configuration, string dbOptionsKey, Action<IdentityOptions> userSignupActions = null)
+         => ConfigurateMRIdentity<MRUser, MRUserStore, MRUserManager<MRUser>>(services, configuration, dbOptionsKey, userSignupActions);
     }
+
 }

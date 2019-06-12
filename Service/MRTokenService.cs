@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using MRApiCommon.Exception;
 using MRApiCommon.Infrastructure.Common;
 using MRApiCommon.Infrastructure.Model.Token;
 using MRApiCommon.Options;
@@ -18,9 +17,21 @@ namespace MRApiCommon.Service
     /// </summary>
     public class MRTokenService
     {
+        /// <summary>
+        /// 
+        /// </summary>
         protected readonly MRTokenOptions _options;
+
+        /// <summary>
+        /// 
+        /// </summary>
         protected ILogger _logger;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="options"></param>
+        /// <param name="loggerFactory"></param>
         public MRTokenService(IOptions<MRTokenOptions> options, ILoggerFactory loggerFactory)
         {
             _options = options.Value;
@@ -60,7 +71,6 @@ namespace MRApiCommon.Service
         /// <returns>JWT token</returns>
         public string GenerateToken(string key, string issuer, string audience, int expireMinutes, List<Tuple<string, string>> claimData, string nameClaim, string roleClaim)
         {
-            // Generate claims identity
             var claims = new List<Claim>();
             foreach (var tuple in claimData)
             {
@@ -69,7 +79,6 @@ namespace MRApiCommon.Service
 
             var identity = new ClaimsIdentity(claims, "Token", nameClaim, roleClaim);
 
-            // generate token
             var now = DateTime.UtcNow;
             var expires = expireMinutes > 0 ? now.Add(TimeSpan.FromMinutes(expireMinutes)) : now.Add(TimeSpan.FromMinutes(60));
 
@@ -79,7 +88,7 @@ namespace MRApiCommon.Service
                 notBefore: now,
                 expires: expires,
                 claims: identity.Claims,
-                signingCredentials: new SigningCredentials(_options.GenerateSecurityKey(key), SecurityAlgorithms.HmacSha256));
+                signingCredentials: new SigningCredentials(GenerateSecurityKey(key), SecurityAlgorithms.HmacSha256));
             var encoded = new JwtSecurityTokenHandler().WriteToken(jwt);
             return encoded;
         }
@@ -131,7 +140,7 @@ namespace MRApiCommon.Service
             var validator = new TokenValidationParameters
             {
                 ClockSkew = TimeSpan.FromMinutes(clockSkewMinutes),
-                IssuerSigningKeys = new List<SecurityKey> { _options.GenerateSecurityKey(key) },
+                IssuerSigningKeys = new List<SecurityKey> { GenerateSecurityKey(key) },
                 RequireSignedTokens = true,
                 RequireExpirationTime = true,
                 ValidateLifetime = validateLifetime,
@@ -181,5 +190,12 @@ namespace MRApiCommon.Service
 
             return new ClaimsIdentity(claims, "Token", MRTokenDefaults.CLAIM_USER_ID, MRTokenDefaults.CLAIM_USER_ROLE);
         }
+
+        /// <summary>
+        /// Generate symmetric security key
+        /// </summary>
+        /// <param name="key">Target key</param>
+        /// <returns>SymmetricSecurityKey</returns>
+        public SymmetricSecurityKey GenerateSecurityKey(string key) => new SymmetricSecurityKey(System.Text.Encoding.ASCII.GetBytes(key));
     }
 }

@@ -1,0 +1,583 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MRApiCommon</name>
+    </assembly>
+    <members>
+        <member name="T:MRApiCommon.Exception.ExceptionCode">
+            <summary>
+            Common MR Exception codes
+            </summary>
+        </member>
+        <member name="F:MRApiCommon.Exception.ExceptionCode.SYSTEM_EXCEPTION">
+            <summary>
+            System unavaliable
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Exception.MRException`1">
+            <summary>
+            Standart exception type for MR applications
+            </summary>
+            <typeparam name="T">Any class to use it in response body</typeparam>
+        </member>
+        <member name="P:MRApiCommon.Exception.MRException`1.Code">
+            <summary>
+            Code of error
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Exception.MRException`1.Description">
+            <summary>
+            Code desciprion (addition to message)
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Exception.MRException`1.Body">
+            <summary>
+            Exception body
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Exception.MRException`1.CreatedTime">
+            <summary>
+            Exception created time
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Exception.MRException`1.#ctor">
+            <summary>
+            Empty constructor
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Exception.MRException`1.#ctor(System.Int32,System.String,System.String,`0,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="code"></param>
+            <param name="message"></param>
+            <param name="description"></param>
+            <param name="body"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="M:MRApiCommon.Exception.MRException`1.#ctor(System.Int32,System.String,`0,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="code"></param>
+            <param name="message"></param>
+            <param name="body"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="M:MRApiCommon.Exception.MRException`1.#ctor(System.Int32,System.String,`0)">
+            <summary>
+            
+            </summary>
+            <param name="code"></param>
+            <param name="message"></param>
+            <param name="body"></param>
+        </member>
+        <member name="M:MRApiCommon.Exception.MRException`1.#ctor(System.Int32,System.String,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="code"></param>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="M:MRApiCommon.Exception.MRException`1.#ctor(System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="code"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:MRApiCommon.Exception.MRException`1.#ctor(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="code"></param>
+        </member>
+        <member name="M:MRApiCommon.Exception.MRException`1.ToDictionaryShort">
+            <summary>
+            Transform exception to Api Response
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MRApiCommon.Exception.MRException`1.ToDictionary">
+            <summary>
+            For logs
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MRApiCommon.Extensions.DateTimeExtensions">
+            <summary>
+            DateTime extensions
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Extensions.DateTimeExtensions.ToUnixTimestamp(System.DateTime)">
+            <summary>
+            From DateTime to Timestamp
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MRApiCommon.Extensions.DateTimeExtensions.FromUnixTimestamp(System.DateTime,System.Int64)">
+            <summary>
+            From timestamp to DateTime
+            </summary>
+            <param name="source"></param>
+            <param name="timestamp"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MRApiCommon.Extensions.MRConfigurationExtensions">
+            <summary>
+            Configuration extensions
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Extensions.MRConfigurationExtensions.ConfigureMRExceptionMiddleware(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Add MRExceptionMiddleware for app
+            </summary>
+            <param name="app"></param>
+        </member>
+        <member name="M:MRApiCommon.Extensions.MRConfigurationExtensions.ConfigureMRToken(Microsoft.Extensions.DependencyInjection.IServiceCollection,MRApiCommon.Options.MRTokenOptions)">
+            <summary>
+            Config JWT Token with options and DI Options[MRTokenOptions]
+            </summary>
+            <param name="services"></param>
+            <param name="options"></param>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.Attr.DbCollectionAttr">
+            <summary>
+            Simplify target collection for entity
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Attr.DbCollectionAttr.Name">
+            <summary>
+            Collection name
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Infrastructure.Attr.DbCollectionAttr.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.Common.MRTokenDefaults">
+            <summary>
+            Default token claim names.
+            </summary>
+        </member>
+        <member name="F:MRApiCommon.Infrastructure.Common.MRTokenDefaults.CLAIM_USER_ID">
+            <summary>
+            Default Id Claime Name.
+            </summary>
+        </member>
+        <member name="F:MRApiCommon.Infrastructure.Common.MRTokenDefaults.CLAIM_USER_ROLE">
+            <summary>
+            Default Role Claim Name.
+            </summary>
+        </member>
+        <member name="F:MRApiCommon.Infrastructure.Common.MRTokenDefaults.CLAIM_USER_EMAIL">
+            <summary>
+            Default Email Claim Name.
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.Database.MREntity">
+            <summary>
+            Common interpretation of Entity
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Database.MREntity.Id">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Database.MREntity.CreateTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Database.MREntity.UpdateTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Database.MREntity.State">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Infrastructure.Database.MREntity.GenerateKey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.Enum.MREntityState">
+            <summary>
+            MR entity state
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.Interface.IMREntity`1">
+            <summary>
+            Basic entity type
+            </summary>
+            <typeparam name="T">Type for id</typeparam>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Interface.IMREntity`1.Id">
+            <summary>
+            Typed id
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Interface.IMREntity`1.CreateTime">
+            <summary>
+            Entity created time
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Interface.IMREntity`1.UpdateTime">
+            <summary>
+            Entity updated time
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Interface.IMREntity`1.State">
+            <summary>
+            Entity current state
+            [Active / Deleted]
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Infrastructure.Interface.IMREntity`1.GenerateKey">
+            <summary>
+            Generate new key for database
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.Interface.IMREntity">
+            <summary>
+            String realization of IMREntity
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.Interface.IMRException">
+            <summary>
+            Common MR Exception interface
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Interface.IMRException.Code">
+            <summary>
+            Code of error
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Interface.IMRException.Description">
+            <summary>
+            Code desciprion (addition to message)
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Interface.IMRException.CreatedTime">
+            <summary>
+            Exception created time
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Infrastructure.Interface.IMRException.ToDictionaryShort">
+            <summary>
+            Transform exception to Api Response
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MRApiCommon.Infrastructure.Interface.IMRException.ToDictionary">
+            <summary>
+            For logs
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.Interface.IMRRepository`2">
+            <summary>
+            Common interface for MRRepository instance
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TKey"></typeparam>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.Interface.IMRRepository`1">
+            <summary>
+            Simple interpretation of IMRRepository
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.Model.ApiResponse.OkApiResponse">
+            <summary>
+            Api Success / Unsuccess response
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Model.ApiResponse.OkApiResponse.Result">
+            <summary>
+            Request result
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Infrastructure.Model.ApiResponse.OkApiResponse.#ctor(System.Boolean)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="result">Response result [false]</param>
+        </member>
+        <member name="M:MRApiCommon.Infrastructure.Model.ApiResponse.OkApiResponse.op_Implicit(System.Nullable{System.Boolean})~MRApiCommon.Infrastructure.Model.ApiResponse.OkApiResponse">
+            <summary>
+            From bool?
+            </summary>
+            <param name="result"></param>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.Model.ApiResponse.PaginationApiResponse`1">
+            <summary>
+            Default Pagination api response model 
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Model.ApiResponse.PaginationApiResponse`1.Take">
+            <summary>
+            Take count
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Model.ApiResponse.PaginationApiResponse`1.Skip">
+            <summary>
+            Skip entity count
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Model.ApiResponse.PaginationApiResponse`1.Total">
+            <summary>
+            Total count
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Model.ApiResponse.PaginationApiResponse`1.TotalPages">
+            <summary>
+            Total pages
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Model.ApiResponse.PaginationApiResponse`1.CurrentPage">
+            <summary>
+            Current page
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Model.ApiResponse.PaginationApiResponse`1.List">
+            <summary>
+            Results list
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Infrastructure.Model.ApiResponse.PaginationApiResponse`1.#ctor">
+            <summary>
+            Empty constructor
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Infrastructure.Model.ApiResponse.PaginationApiResponse`1.#ctor(System.Int32,System.Int32,System.Int32,System.Collections.Generic.List{`0})">
+            <summary>
+            Full constructor
+            </summary>
+            <param name="skip"></param>
+            <param name="take"></param>
+            <param name="total"></param>
+            <param name="list"></param>
+        </member>
+        <member name="M:MRApiCommon.Infrastructure.Model.ApiResponse.PaginationApiResponse`1.#ctor(System.Int32,System.Int32,System.Collections.Generic.List{`0})">
+            <summary>
+            
+            </summary>
+            <param name="skip"></param>
+            <param name="take"></param>
+            <param name="list"></param>
+        </member>
+        <member name="M:MRApiCommon.Infrastructure.Model.ApiResponse.PaginationApiResponse`1.#ctor(System.Collections.Generic.List{`0})">
+            <summary>
+            
+            </summary>
+            <param name="list"></param>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.Model.Token.MRCorrectTokenData">
+            <summary>
+            Default respondent of MR token validation
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Model.Token.MRCorrectTokenData.UserId">
+            <summary>
+            Decrypted user id
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Model.Token.MRCorrectTokenData.UserEmail">
+            <summary>
+            Decrypted user email
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.Model.Token.MRCorrectTokenData.UserRoles">
+            <summary>
+            Decrypted user roles
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Manager.MRTokenAuthManager">
+            <summary>
+            Base manager for MRToken auth
+            </summary>
+        </member>
+        <member name="F:MRApiCommon.Manager.MRTokenAuthManager._httpContextAccessor">
+            <summary>
+            Http context accessor
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Manager.MRTokenAuthManager._isAuthorized">
+            <summary>
+            Is user authorized
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Manager.MRTokenAuthManager._userId">
+            <summary>
+            Get current user id
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Manager.MRTokenAuthManager._userEmail">
+            <summary>
+            Get current user email
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Manager.MRTokenAuthManager._userRoles">
+            <summary>
+            Get current user roles
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Manager.MRTokenAuthManager.IsInRole(System.String)">
+            <summary>
+            Is current user in role
+            </summary>
+            <param name="role">Target role</param>
+            <returns></returns>
+        </member>
+        <member name="M:MRApiCommon.Manager.MRTokenAuthManager.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <member name="T:MRApiCommon.Options.MRDbMongoOptions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Options.MRDbMongoOptions.ConnectionString">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Options.MRDbMongoOptions.Database">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Options.MRTokenOptions">
+            <summary>
+            Basic token options
+            [Provide it in AppSettings.json]
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Options.MRTokenOptions.Issuer">
+            <summary>
+            Token issuer
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Options.MRTokenOptions.ValidateIssuer">
+            <summary>
+            Provide issuer validation
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Options.MRTokenOptions.Audience">
+            <summary>
+            Token audience
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Options.MRTokenOptions.ValidateAudience">
+            <summary>
+            Provide audience validation
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Options.MRTokenOptions.Key">
+            <summary>
+            Secret key for token
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Options.MRTokenOptions.ValidateKey">
+            <summary>
+            Provide key validation
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Options.MRTokenOptions.Lifetime">
+            <summary>
+            Tokne lifetime in minutes
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Options.MRTokenOptions.ValidateLifetime">
+            <summary>
+            Provide token lifetime validation
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Options.MRTokenOptions.RequireHttps">
+            <summary>
+            Require HTTPS connection for token transfer
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Options.MRTokenOptions.GetSecurityKey">
+            <summary>
+            Get Symmetric key from options key
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Options.MRTokenOptions.GenerateSecurityKey(System.String)">
+            <summary>
+            Generate custom not settings provided security key
+            </summary>
+            <param name="key">Security key</param>
+            <returns>Symmetric key</returns>
+        </member>
+        <member name="T:MRApiCommon.Service.MRTokenService">
+            <summary>
+            Service for manipulations with toknes
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Service.MRTokenService.GenerateToken(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Generate token based on MRTokenOptions data
+            </summary>
+            <param name="userId">Target user id</param>
+            <param name="userEmail">Target user email</param>
+            <param name="userRoles">Target user role list</param>
+            <returns>JWT token</returns>
+        </member>
+        <member name="M:MRApiCommon.Service.MRTokenService.GenerateToken(System.String,System.String,System.String,System.Int32,System.Collections.Generic.List{System.Tuple{System.String,System.String}},System.String,System.String)">
+            <summary>
+            Generate custom token
+            </summary>
+            <param name="key">Token key</param>
+            <param name="issuer">Token issuer</param>
+            <param name="audience">Token audience</param>
+            <param name="expireMinutes">Token expire time in minutes</param>
+            <param name="claimData">Token claim data</param>
+            <param name="nameClaim">Token name claim type</param>
+            <param name="roleClaim">Token role claim type</param>
+            <returns>JWT token</returns>
+        </member>
+        <member name="M:MRApiCommon.Service.MRTokenService.ValidateToken(System.String)">
+            <summary>
+            Validate MRToken with MRTokenOptions data
+            </summary>
+            <param name="token">Target token</param>
+            <returns><see cref="T:MRApiCommon.Infrastructure.Model.Token.MRCorrectTokenData"/></returns>
+        </member>
+        <member name="M:MRApiCommon.Service.MRTokenService.ValidateToken(System.String,System.String,System.String,System.String,System.Int32,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Validate custom token
+            </summary>
+            <param name="token">Target token</param>
+            <param name="key">Token key</param>
+            <param name="audience">Correct audience</param>
+            <param name="issuer">Correct issuer</param>
+            <param name="clockSkewMinutes">Clock skew</param>
+            <param name="validateAudience">Provide audience validation</param>
+            <param name="validateIssuer">Provide issuer validation</param>
+            <param name="validateLifetime">Provide lifetime validation</param>
+            <returns></returns>
+        </member>
+        <member name="M:MRApiCommon.Service.MRTokenService.GenerateClaimsIdentity(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Generate Identity based on MRTokenOptions file
+            </summary>
+            <param name="userId">Target user id</param>
+            <param name="userEmail">Target user email</param>
+            <param name="userRoles">Target user role list</param>
+            <returns><see cref="T:System.Security.Claims.ClaimsIdentity"/></returns>
+        </member>
+    </members>
+</doc>

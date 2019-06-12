@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MRApiCommon", "MRApiCommon.csproj", "{8E2C1EE3-9037-403E-930F-BEC9D0E239A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRApiCommonTest", "..\MRApiCommonTest\MRApiCommonTest.csproj", "{EB5A05E3-870F-4E50-99E5-CAEEE2359975}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8E2C1EE3-9037-403E-930F-BEC9D0E239A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E2C1EE3-9037-403E-930F-BEC9D0E239A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E2C1EE3-9037-403E-930F-BEC9D0E239A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB5A05E3-870F-4E50-99E5-CAEEE2359975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB5A05E3-870F-4E50-99E5-CAEEE2359975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB5A05E3-870F-4E50-99E5-CAEEE2359975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB5A05E3-870F-4E50-99E5-CAEEE2359975}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
