@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MRApiCommon.Infrastructure.Attr;
@@ -15,7 +15,7 @@ namespace MRApiCommon.Infrastructure.IdentityExtensions.Components
     /// 
     /// </summary>
     [CollectionAttr("User")]
-    public class MRUser : MREntity, IMREntity, IUser
+    public class MRUser : IdentityUser, IMREntity
     {
         /// <summary>
         /// 
@@ -27,15 +27,6 @@ namespace MRApiCommon.Infrastructure.IdentityExtensions.Components
         /// </summary>
         public string LastName { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public string UserName { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string NormalizedUserName { get; set; }
 
         /// <summary>
         /// 
@@ -43,15 +34,6 @@ namespace MRApiCommon.Infrastructure.IdentityExtensions.Components
         [BsonRepresentation(BsonType.String)]
         public MRUserSex Sex { get; set; } = MRUserSex.UNDEFINED;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public string NormalizedEmail { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Email { get; set; }
 
         /// <summary>
         /// 
@@ -96,26 +78,36 @@ namespace MRApiCommon.Infrastructure.IdentityExtensions.Components
         /// <summary>
         /// 
         /// </summary>
-        public List<Microsoft.AspNetCore.Identity.UserLoginInfo> Logins { get; set; } = new List<Microsoft.AspNetCore.Identity.UserLoginInfo>();
+        public List<UserLoginInfo> Logins { get; set; } = new List<UserLoginInfo>();
 
         /// <summary>
         /// 
         /// </summary>
         public List<MRUserRole> Roles { get; set; } = new List<MRUserRole>();
 
+        
         /// <summary>
         /// 
         /// </summary>
-        public string PasswordHash { get; set; }
+        public DateTime CreateTime { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public string SecurityStamp { get; set; } = Guid.NewGuid().ToString();
+        public DateTime? UpdateTime { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public bool TwoFactorEnabled { get; set; }
+        public MREntityState State { get;set; }
+
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public void GenerateKey()
+        {
+            Id = ObjectId.GenerateNewId().ToString();
+        }
     }
 }

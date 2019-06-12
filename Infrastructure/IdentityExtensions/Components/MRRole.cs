@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System;
+using Microsoft.AspNetCore.Identity;
+using MongoDB.Bson;
 using MRApiCommon.Infrastructure.Attr;
-using MRApiCommon.Infrastructure.Database;
+using MRApiCommon.Infrastructure.Enum;
 using MRApiCommon.Infrastructure.Interface;
 
 namespace MRApiCommon.Infrastructure.IdentityExtensions.Components
@@ -9,16 +11,30 @@ namespace MRApiCommon.Infrastructure.IdentityExtensions.Components
     /// 
     /// </summary>
     [CollectionAttr("Role")]
-    public class MRRole : MREntity, IMREntity, IRole
+    public class MRRole : IdentityRole, IMREntity
     {
         /// <summary>
         /// 
         /// </summary>
-        public string Name { get; set; }
+        public DateTime CreateTime { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public string NormalizedName { get; set; }
+        public DateTime? UpdateTime { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public MREntityState State { get; set; }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void GenerateKey()
+        {
+            Id = ObjectId.GenerateNewId().ToString();
+        }
     }
 }

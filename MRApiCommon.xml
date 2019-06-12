@@ -257,12 +257,22 @@
             
             </summary>
         </member>
-        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRRole.Name">
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRRole.CreateTime">
             <summary>
             
             </summary>
         </member>
-        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRRole.NormalizedName">
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRRole.UpdateTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRRole.State">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRRole.GenerateKey">
             <summary>
             
             </summary>
@@ -282,27 +292,7 @@
             
             </summary>
         </member>
-        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.UserName">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.NormalizedUserName">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.Sex">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.NormalizedEmail">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.Email">
             <summary>
             
             </summary>
@@ -357,17 +347,22 @@
             
             </summary>
         </member>
-        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.PasswordHash">
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.CreateTime">
             <summary>
             
             </summary>
         </member>
-        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.SecurityStamp">
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.UpdateTime">
             <summary>
             
             </summary>
         </member>
-        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.TwoFactorEnabled">
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.State">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.GenerateKey">
             <summary>
             
             </summary>
