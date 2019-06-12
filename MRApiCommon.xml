@@ -136,24 +136,43 @@
             </summary>
             <param name="app"></param>
         </member>
-        <member name="M:MRApiCommon.Extensions.MRConfigurationExtensions.ConfigureMRToken(Microsoft.Extensions.DependencyInjection.IServiceCollection,MRApiCommon.Options.MRTokenOptions)">
+        <member name="M:MRApiCommon.Extensions.MRConfigurationExtensions.ConfigureMRToken(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.String)">
             <summary>
             Config JWT Token with options and DI Options[MRTokenOptions]
             </summary>
             <param name="services"></param>
-            <param name="options"></param>
+            <param name="configuration"></param>
+            <param name="tokenOptionsKey"></param>
         </member>
-        <member name="T:MRApiCommon.Infrastructure.Attr.DbCollectionAttr">
+        <member name="M:MRApiCommon.Extensions.MRConfigurationExtensions.ConfigurateMRIdentity``3(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.String,System.Action{Microsoft.AspNetCore.Identity.IdentityOptions})">
+            <summary>
+            Configurate MR Identity with MongoDB in system
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <param name="dbOptionsKey"></param>
+            <param name="userSignupActions"></param>
+        </member>
+        <member name="M:MRApiCommon.Extensions.MRConfigurationExtensions.ConfigurateMRIdentity(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.String,System.Action{Microsoft.AspNetCore.Identity.IdentityOptions})">
+            <summary>
+            Default interpretation
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <param name="dbOptionsKey"></param>
+            <param name="userSignupActions"></param>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.Attr.CollectionAttr">
             <summary>
             Simplify target collection for entity
             </summary>
         </member>
-        <member name="P:MRApiCommon.Infrastructure.Attr.DbCollectionAttr.Name">
+        <member name="P:MRApiCommon.Infrastructure.Attr.CollectionAttr.Name">
             <summary>
             Collection name
             </summary>
         </member>
-        <member name="M:MRApiCommon.Infrastructure.Attr.DbCollectionAttr.#ctor(System.String)">
+        <member name="M:MRApiCommon.Infrastructure.Attr.CollectionAttr.#ctor(System.String)">
             <summary>
             
             </summary>
@@ -212,6 +231,266 @@
             <summary>
             MR entity state
             </summary>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.Enum.MRUserSex">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MRApiCommon.Infrastructure.Enum.MRUserSex.UNDEFINED">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MRApiCommon.Infrastructure.Enum.MRUserSex.MALE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MRApiCommon.Infrastructure.Enum.MRUserSex.FEMALE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRRole">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRRole.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRRole.NormalizedName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.FirstName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.LastName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.UserName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.NormalizedUserName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.Sex">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.NormalizedEmail">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.Email">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.IsEmailConfirmed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.Isblocked">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.BlockReason">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.FailedLoginCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.Image">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.Tels">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.Claims">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.Tokens">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.Logins">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.Roles">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.PasswordHash">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.SecurityStamp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser.TwoFactorEnabled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUserImage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUserImage.Key">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUserImage.Url">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUserRole">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUserRole.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUserRole.NormalizedName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUserRole.CreatedTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUserTel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUserTel.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUserTel.Tel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUserToken">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUserToken.Issuer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUserToken.Value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUserToken.CreateTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUserToken.ExpireTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.IdentityExtensions.Interface.IMRRoleStore">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.IdentityExtensions.Interface.IMRUserStore">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.IdentityExtensions.Interface.IMRUserStore`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="U"></typeparam>
+        </member>
+        <member name="M:MRApiCommon.Infrastructure.IdentityExtensions.Store.MRRoleStore.#ctor(Microsoft.Extensions.Options.IOptions{MRApiCommon.Options.MRDbOptions})">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="settings"></param>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.IdentityExtensions.Store.MRUserStore">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Infrastructure.IdentityExtensions.Store.MRUserStore.#ctor(Microsoft.Extensions.Options.IOptions{MRApiCommon.Options.MRDbOptions})">
+            <summary>
+            
+            </summary>
+            <param name="settings"></param>
+        </member>
+        <member name="T:MRApiCommon.Infrastructure.IdentityExtensions.Store.MRUserStore`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TUser"></typeparam>
+        </member>
+        <member name="M:MRApiCommon.Infrastructure.IdentityExtensions.Store.MRUserStore`1.#ctor(Microsoft.Extensions.Options.IOptions{MRApiCommon.Options.MRDbOptions})">
+            <summary>
+            
+            </summary>
+            <param name="settings"></param>
         </member>
         <member name="T:MRApiCommon.Infrastructure.Interface.IMREntity`1">
             <summary>
@@ -444,17 +723,17 @@
             </summary>
             <param name="httpContextAccessor"></param>
         </member>
-        <member name="T:MRApiCommon.Options.MRDbMongoOptions">
+        <member name="T:MRApiCommon.Options.MRDbOptions">
             <summary>
             
             </summary>
         </member>
-        <member name="P:MRApiCommon.Options.MRDbMongoOptions.ConnectionString">
+        <member name="P:MRApiCommon.Options.MRDbOptions.ConnectionString">
             <summary>
             
             </summary>
         </member>
-        <member name="P:MRApiCommon.Options.MRDbMongoOptions.Database">
+        <member name="P:MRApiCommon.Options.MRDbOptions.Database">
             <summary>
             
             </summary>
@@ -527,6 +806,23 @@
             Service for manipulations with toknes
             </summary>
         </member>
+        <member name="F:MRApiCommon.Service.MRTokenService._options">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MRApiCommon.Service.MRTokenService._logger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MRApiCommon.Service.MRTokenService.#ctor(Microsoft.Extensions.Options.IOptions{MRApiCommon.Options.MRTokenOptions},Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            
+            </summary>
+            <param name="options"></param>
+            <param name="loggerFactory"></param>
+        </member>
         <member name="M:MRApiCommon.Service.MRTokenService.GenerateToken(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
             <summary>
             Generate token based on MRTokenOptions data
@@ -578,6 +874,72 @@
             <param name="userEmail">Target user email</param>
             <param name="userRoles">Target user role list</param>
             <returns><see cref="T:System.Security.Claims.ClaimsIdentity"/></returns>
+        </member>
+        <member name="M:MRApiCommon.Service.MRTokenService.GenerateSecurityKey(System.String)">
+            <summary>
+            Generate symmetric security key
+            </summary>
+            <param name="key">Target key</param>
+            <returns>SymmetricSecurityKey</returns>
+        </member>
+        <member name="T:MRApiCommon.Tools.MongoQueryBuilder`2">
+            <summary>
+            
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TKey"></typeparam>
+        </member>
+        <member name="T:MRMongoTools.Extensions.Identity.Manager.MRRoleManager">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MRMongoTools.Extensions.Identity.Manager.MRRoleManager.#ctor(MRApiCommon.Infrastructure.IdentityExtensions.Interface.IMRRoleStore,System.Collections.Generic.IEnumerable{Microsoft.AspNetCore.Identity.IRoleValidator{MRApiCommon.Infrastructure.IdentityExtensions.Components.MRRole}},Microsoft.AspNetCore.Identity.ILookupNormalizer,Microsoft.AspNetCore.Identity.IdentityErrorDescriber,Microsoft.Extensions.Logging.ILogger{Microsoft.AspNetCore.Identity.RoleManager{MRApiCommon.Infrastructure.IdentityExtensions.Components.MRRole}})">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="store"></param>
+            <param name="roleValidators"></param>
+            <param name="keyNormalizer"></param>
+            <param name="errors"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="T:MRMongoTools.Extensions.Identity.Manager.MRSignInManager`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TUser"></typeparam>
+        </member>
+        <member name="M:MRMongoTools.Extensions.Identity.Manager.MRSignInManager`1.#ctor(MRMongoTools.Extensions.Identity.Manager.MRUserManager{`0},Microsoft.AspNetCore.Http.IHttpContextAccessor,Microsoft.AspNetCore.Identity.IUserClaimsPrincipalFactory{MRApiCommon.Infrastructure.IdentityExtensions.Components.MRUser},Microsoft.Extensions.Options.IOptions{Microsoft.AspNetCore.Identity.IdentityOptions},Microsoft.Extensions.Logging.ILogger{Microsoft.AspNetCore.Identity.SignInManager{`0}},Microsoft.AspNetCore.Authentication.IAuthenticationSchemeProvider)">
+            <summary>
+            
+            </summary>
+            <param name="userManager"></param>
+            <param name="contextAccessor"></param>
+            <param name="claimsFactory"></param>
+            <param name="optionsAccessor"></param>
+            <param name="logger"></param>
+            <param name="schemes"></param>
+        </member>
+        <member name="T:MRMongoTools.Extensions.Identity.Manager.MRUserValidator`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TUser"></typeparam>
+        </member>
+        <member name="M:MRMongoTools.Extensions.Identity.Manager.MRUserValidator`1.#ctor(Microsoft.AspNetCore.Identity.IdentityErrorDescriber)">
+            <summary>
+            
+            </summary>
+            <param name="errors"></param>
+        </member>
+        <member name="M:MRMongoTools.Extensions.Identity.Manager.MRUserValidator`1.ValidateAsync(Microsoft.AspNetCore.Identity.UserManager{`0},`0)">
+            <summary>
+            
+            </summary>
+            <param name="manager"></param>
+            <param name="user"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>
