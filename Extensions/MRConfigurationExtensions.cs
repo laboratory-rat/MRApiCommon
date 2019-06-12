@@ -7,13 +7,25 @@ using MRApiCommon.Options;
 
 namespace MRApiCommon.Extensions
 {
+    /// <summary>
+    /// Configuration extensions
+    /// </summary>
     public static class MRConfigurationExtensions
     {
+        /// <summary>
+        /// Add MRExceptionMiddleware for app
+        /// </summary>
+        /// <param name="app"></param>
         public static void ConfigureMRExceptionMiddleware(this IApplicationBuilder app)
         {
             app.UseMiddleware<MRExceptionMiddleware>();
         }
 
+        /// <summary>
+        /// Config JWT Token with options and DI Options[MRTokenOptions]
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="options"></param>
         public static void ConfigureMRToken(this IServiceCollection services, MRTokenOptions options)
         {
             services.AddOptions<MRTokenOptions>();

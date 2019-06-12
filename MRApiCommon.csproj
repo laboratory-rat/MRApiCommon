@@ -12,10 +12,15 @@
     <RepositoryUrl>https://github.com/laboratory-rat/MRApiCommon</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>Net Standard, Tools, Api</PackageTags>
+    <NeutralLanguage></NeutralLanguage>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>D:\projects\madrat\packages\MRCommon\MRApiCommon.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\projects\madrat\packages\MRApiCommon\MRApiCommon.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

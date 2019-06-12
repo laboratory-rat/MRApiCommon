@@ -36,17 +36,57 @@ namespace MRApiCommon.Exception
         /// </summary>
         public MRException() { }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="message"></param>
+        /// <param name="description"></param>
+        /// <param name="body"></param>
+        /// <param name="innerException"></param>
         public MRException(int code, string message, string description, T body, System.Exception innerException) : base(message, innerException)
         {
             Code = code;
             Description = description;
             Body = body;
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="message"></param>
+        /// <param name="body"></param>
+        /// <param name="innerException"></param>
         public MRException(int code, string message, T body, System.Exception innerException) : this(code, message, null, body, innerException) { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="message"></param>
+        /// <param name="body"></param>
         public MRException(int code, string message, T body) : this(code, message, null, body, null) { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="message"></param>
+        /// <param name="innerException"></param>
         public MRException(int code, string message, System.Exception innerException) : this(code, message, null, null, innerException) { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="message"></param>
         public MRException(int code, string message) : this(code, message, null, null, null) { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
         public MRException(int code) : this(code, code.ToString(), null, null, null) { }
 
         /// <summary>

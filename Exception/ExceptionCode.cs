@@ -1,7 +1,13 @@
 ﻿namespace MRApiCommon.Exception
 {
+    /// <summary>
+    /// Common MR Exception codes
+    /// </summary>
     public enum ExceptionCode
     {
+        /// <summary>
+        /// System unavaliable
+        /// </summary>
         SYSTEM_EXCEPTION = -1,
 
         BAD_REQUEST = 1,
