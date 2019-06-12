@@ -2,6 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Description>Common MR Api tools</Description>
+    <Company>Mad Rat Studio</Company>
+    <Authors>Oleh Tymofieiev &lt;oleg.timofeev20@gmail.com&gt;</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>Mad Rat Studio</Copyright>
+    <PackageProjectUrl>https://github.com/laboratory-rat/MRApiCommon</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/laboratory-rat/MRApiCommon</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>Net Standard, Tools, Api</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -20,6 +30,13 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
