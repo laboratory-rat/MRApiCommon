@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using MRApiCommon.Exception;
+using MRApiCommon.Infrastructure.Interface;
 using Newtonsoft.Json;
 using System.Net;
 using System.Threading.Tasks;
