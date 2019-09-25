@@ -14,7 +14,7 @@
     <PackageTags>Net Standard, Tools, Api, MongoDb</PackageTags>
     <NeutralLanguage></NeutralLanguage>
     <UserSecretsId>747665c2-e397-41bb-9e07-683b4523057a</UserSecretsId>
-    <Version>1.0.3</Version>
+    <Version>1.0.5</Version>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 

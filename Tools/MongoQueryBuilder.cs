@@ -65,6 +65,11 @@ namespace MRApiCommon.Tools
             AddOrCreate(FilterBuilder.ElemMatch(list, match));
             return this;
         }
+        public MongoQueryBuilder<TEntity, TKey> Regex(Expression<Func<TEntity, object>> field, string pattern, string options = "")
+        {
+            AddOrCreate(FilterBuilder.Regex(field, new MongoDB.Bson.BsonRegularExpression(pattern, options)));
+            return this;
+        }
 
         #endregion
 
@@ -207,8 +212,8 @@ namespace MRApiCommon.Tools
         #region utilites
 
         public FilterDefinition<TEntity> And(FilterDefinition<TEntity> f1, FilterDefinition<TEntity> f2) => And(new FilterDefinition<TEntity>[] { f1, f2 });
-        public FilterDefinition<TEntity> And(FilterDefinition<TEntity>[] args) => FilterBuilder.And(args);
-        public FilterDefinition<TEntity> Or(FilterDefinition<TEntity>[] args) => FilterBuilder.Or(args);
+        public FilterDefinition<TEntity> And(params FilterDefinition<TEntity>[] args) => FilterBuilder.And(args);
+        public FilterDefinition<TEntity> Or(params FilterDefinition<TEntity>[] args) => FilterBuilder.Or(args);
 
         protected void AddOrCreate(FilterDefinition<TEntity> defenition)
         {

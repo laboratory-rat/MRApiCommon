@@ -29,7 +29,7 @@ namespace MRApiCommon.Infrastructure.Database
             _database = database;
 
             var collectionAttr = (CollectionAttr)Attribute.GetCustomAttribute(typeof(TEntity), typeof(CollectionAttr));
-            var collectionName = collectionAttr == null && !string.IsNullOrWhiteSpace(collectionAttr?.Name) ? nameof(TEntity) : collectionAttr.Name;
+            var collectionName = collectionAttr == null && string.IsNullOrWhiteSpace(collectionAttr?.Name) ? typeof(TEntity).Name : collectionAttr.Name;
 
             _collection = _database.GetCollection<TEntity>(collectionName);
         }
@@ -161,11 +161,17 @@ namespace MRApiCommon.Infrastructure.Database
         public virtual async Task<long> Count<F>(Expression<Func<TEntity, F>> field, F value)
             => await _collection.CountDocumentsAsync(_builder.Eq(field, value).Filter);
 
+        public virtual async Task<long> Count(MongoQueryBuilder<TEntity, TKey> query)
+            => await _collection.CountDocumentsAsync(query.Filter);
+
         public virtual async Task<bool> Any(Expression<Func<TEntity, bool>> search)
             => (await Count(search)) > 0;
 
         public virtual async Task<bool> Any<F>(Expression<Func<TEntity, F>> field, F value)
             => (await Count(field, value)) > 0;
+
+        public virtual async Task<bool> Any(MongoQueryBuilder<TEntity, TKey> query)
+            => (await Count(query)) > 0;
 
         public virtual async Task<bool> ExistsOne(Expression<Func<TEntity, bool>> search)
             => (await Count(search)) == 1;
@@ -175,6 +181,9 @@ namespace MRApiCommon.Infrastructure.Database
 
         public virtual async Task<bool> ExistsOne(TKey id)
             => (await Count(x => x.Id, id)) == 1;
+
+        public virtual async Task<bool> ExistsOne(MongoQueryBuilder<TEntity, TKey> query)
+            => (await Count(query)) == 1;
 
         #endregion
 

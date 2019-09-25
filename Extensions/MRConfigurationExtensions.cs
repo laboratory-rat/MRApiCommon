@@ -10,6 +10,7 @@ using MRApiCommon.Infrastructure.IdentityExtensions.Interface;
 using MRApiCommon.Infrastructure.IdentityExtensions.Store;
 using MRApiCommon.Middleware;
 using MRApiCommon.Options;
+using MRApiCommon.Service;
 using MRMongoTools.Extensions.Identity.Manager;
 using System;
 
@@ -40,6 +41,8 @@ namespace MRApiCommon.Extensions
             var options = new MRTokenOptions();
             configuration.Bind(tokenOptionsKey, options);
             services.Configure<MRTokenOptions>(configuration.GetSection(tokenOptionsKey));
+
+            services.AddTransient<MRTokenService>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(o =>
