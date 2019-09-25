@@ -164,6 +164,9 @@ namespace MRApiCommon.Infrastructure.Database
         public virtual async Task<long> Count(MongoQueryBuilder<TEntity, TKey> query)
             => await _collection.CountDocumentsAsync(query.Filter);
 
+        public virtual async Task<long> Count()
+            => await _collection.CountDocumentsAsync(x => x.State == MREntityState.Active);
+
         public virtual async Task<bool> Any(Expression<Func<TEntity, bool>> search)
             => (await Count(search)) > 0;
 
