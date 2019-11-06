@@ -8,16 +8,16 @@
         /// <summary>
         /// Default Id Claime Name.
         /// </summary>
-        public const string CLAIM_USER_ID = "user.id";
+        public const string CLAIM_USER_ID = "user_id";
 
         /// <summary>
         /// Default Role Claim Name.
         /// </summary>
-        public const string CLAIM_USER_ROLE = "user.role";
+        public const string CLAIM_USER_ROLE = "user_role";
 
         /// <summary>
         /// Default Email Claim Name.
         /// </summary>
-        public const string CLAIM_USER_EMAIL = "user.email";
+        public const string CLAIM_USER_EMAIL = "user_email";
     }
 }

@@ -136,13 +136,14 @@
             </summary>
             <param name="app"></param>
         </member>
-        <member name="M:MRApiCommon.Extensions.MRConfigurationExtensions.ConfigureMRToken(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.String)">
+        <member name="M:MRApiCommon.Extensions.MRConfigurationExtensions.ConfigureMRToken(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.String,System.Action{Microsoft.AspNetCore.Authentication.AuthenticationOptions})">
             <summary>
             Config JWT Token with options and DI Options[MRTokenOptions]
             </summary>
             <param name="services"></param>
             <param name="configuration"></param>
             <param name="tokenOptionsKey"></param>
+            <param name="authenticationOptoins"></param>
         </member>
         <member name="M:MRApiCommon.Extensions.MRConfigurationExtensions.ConfigurateMRIdentity``3(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.String,System.Action{Microsoft.AspNetCore.Identity.IdentityOptions})">
             <summary>

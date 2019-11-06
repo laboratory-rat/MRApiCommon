@@ -84,7 +84,8 @@ namespace MRApiCommon.Infrastructure.IdentityExtensions.Store
                     }
                 });
             }
-
+            user.NormalizedEmail = user.Email.ToUpperInvariant();
+            user.NormalizedUserName = user.UserName.ToUpperInvariant();
             await Insert(user);
             return IdentityResult.Success;
         }
@@ -201,6 +202,7 @@ namespace MRApiCommon.Infrastructure.IdentityExtensions.Store
         public async Task SetEmailAsync(TUser user, string email, CancellationToken cancellationToken)
         {
             user.Email = email;
+            user.NormalizedEmail = email.ToUpperInvariant();
             await UpdateByQuery(_builder.Eq(x => x.Id, user.Id).UpdateSet(x => x.Email, email));
         }
 

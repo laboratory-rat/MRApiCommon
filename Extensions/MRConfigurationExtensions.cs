@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -36,15 +37,21 @@ namespace MRApiCommon.Extensions
         /// <param name="services"></param>
         /// <param name="configuration"></param>
         /// <param name="tokenOptionsKey"></param>
-        public static void ConfigureMRToken(this IServiceCollection services, IConfiguration configuration, string tokenOptionsKey)
+        /// <param name="authenticationOptoins"></param>
+        public static void ConfigureMRToken(this IServiceCollection services, IConfiguration configuration, string tokenOptionsKey, 
+            Action<AuthenticationOptions> authenticationOptoins = null)
         {
+            authenticationOptoins = authenticationOptoins ?? new Action<AuthenticationOptions>((x) =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            });
+
             var options = new MRTokenOptions();
             configuration.Bind(tokenOptionsKey, options);
             services.Configure<MRTokenOptions>(configuration.GetSection(tokenOptionsKey));
-
             services.AddTransient<MRTokenService>();
-
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication(authenticationOptoins)
                 .AddJwtBearer(o =>
                 {
                     o.RequireHttpsMetadata = options.RequireHttps;
@@ -70,7 +77,8 @@ namespace MRApiCommon.Extensions
         /// <param name="configuration"></param>
         /// <param name="dbOptionsKey"></param>
         /// <param name="userSignupActions"></param>
-        public static void ConfigurateMRIdentity<TUser, TUserStore, TUserManager>(this IServiceCollection services, IConfiguration configuration, string dbOptionsKey, Action<IdentityOptions> userSignupActions = null)
+        public static void ConfigurateMRIdentity<TUser, TUserStore, TUserManager>(this IServiceCollection services, IConfiguration configuration, 
+            string dbOptionsKey, Action<IdentityOptions> userSignupActions = null)
             where TUser : MRUser, new()
             where TUserStore : MRUserStore<TUser>
             where TUserManager : MRUserManager<TUser>
